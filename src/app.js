@@ -12,6 +12,14 @@ app.get("/", (req, res) => {
   res.send("API Running Successfully");
 });
 
+app.get("/debug", (req, res) => {
+  res.send({
+    uri: process.env.MONGO_DB_URI,
+    connected: mongoose.connection.readyState
+  });
+});
+
+
 app.use('/user', UserRoutes)
 app.use('/conversation', ConversationRoutes)
 
