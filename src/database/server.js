@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-import { DB_NAME } from "../constant.js";
-dotenv.config();
-console.log('dotenv =====================', process.env.MONGO_DB_URI)
+
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_DB_URI);
-    console.log("MongoDB Connected");
+    await mongoose.connect(process.env.MONGO_DB_URI, {
+      serverSelectionTimeoutMS: 5000,
+    });
+
+    console.log("MongoDB Connected Successfully");
   } catch (err) {
-    console.error("MongoDB connection error:", err);
+    console.error("MongoDB Connection Error:", err.message);
   }
 };
 
