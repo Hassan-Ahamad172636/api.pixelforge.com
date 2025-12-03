@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import UserRoutes from "../src/routes/user.route.js"
 import ConversationRoutes from "../src/routes/conversation.route.js"
+import mongoose from "mongoose";
 
 const app = express();
 app.use(cors());
