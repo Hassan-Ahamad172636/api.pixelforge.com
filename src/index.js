@@ -1,11 +1,12 @@
-import DBConnection from './database/server.js';
+
 import app from './app.js';
 import http from 'http';
 import { initSocket } from './services/socket.js';
+import { connectDB } from './database/server.js';
 
 const startServer = async () => {
     try {
-        await DBConnection();
+        await connectDB();
 
         const PORT = process.env.PORT || 5000;
 
