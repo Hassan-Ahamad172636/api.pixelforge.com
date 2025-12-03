@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
 app.get("/debug", (req, res) => {
   res.send({
     uri: process.env.MONGO_DB_URI,
+    name: process.env.DB_NAME,
     connected: mongoose.connection.readyState
   });
 });
