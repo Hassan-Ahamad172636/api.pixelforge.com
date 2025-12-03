@@ -18,13 +18,24 @@ app.get("/", (req, res) => {
   res.send("API Running Successfully");
 });
 
-app.get("/debug", (req, res) => {
-  res.send({
-    uri: process.env.MONGO_DB_URI,
-    name: DB_NAME,
-    connected: mongoose.connection.readyState  // 1 = connected
-  });
+app.get("/debug", async (req, res) => {
+  try {
+    await mongoose.connect(process.env.MONGO_DB_URI);
+
+    res.send({
+      uri: process.env.MONGO_DB_URI,
+      connected: mongoose.connection.readyState,
+      error: null
+    });
+  } catch (err) {
+    res.send({
+      uri: process.env.MONGO_DB_URI,
+      connected: mongoose.connection.readyState,
+      error: err.message
+    });
+  }
 });
+
 
 app.use("/user", UserRoutes);
 app.use("/conversation", ConversationRoutes);
