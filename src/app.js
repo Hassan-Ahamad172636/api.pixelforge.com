@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import UserRoutes from "../routes/user.route.js"
-import ConversationRoutes from "../routes/conversation.route.js"
+import UserRoutes from "../src/routes/user.route.js"
+import ConversationRoutes from "../src/routes/conversation.route.js"
 import connectDB from "./database/server.js";
 
 const app = express();
