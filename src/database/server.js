@@ -1,18 +1,16 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-let isConnected = false;
-
-export const connectDB = async () => {
-  if (isConnected) return;
-
+const connectDB = async () => {
   try {
-    const connection = await mongoose.connect(process.env.MONGO_DB_URI, {
+    await mongoose.connect(process.env.MONGO_DB_URI, {
       dbName: process.env.DB_NAME,
     });
-
-    isConnected = connection.connections[0].readyState;
-    console.log("Database Connected");
-  } catch (error) {
-    console.error("MongoDB Error:", error);
+    console.log("MongoDB Connected");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
   }
 };
+
+export default connectDB;
