@@ -3,6 +3,7 @@ import cors from "cors";
 import UserRoutes from "../src/routes/user.route.js"
 import ConversationRoutes from "../src/routes/conversation.route.js"
 import mongoose from "mongoose";
+import { DB_NAME } from "./constant.js";
 
 const app = express();
 app.use(cors());
@@ -16,7 +17,7 @@ app.get("/", (req, res) => {
 app.get("/debug", (req, res) => {
   res.send({
     uri: process.env.MONGO_DB_URI,
-    name: process.env.DB_NAME,
+    name: DB_NAME,
     connected: mongoose.connection.readyState
   });
 });
