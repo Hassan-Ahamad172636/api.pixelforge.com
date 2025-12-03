@@ -1,4 +1,4 @@
-import { asyncHandler } from "../utils/asyncHandler.js";
+import { asyncHandler } from "../utils/asynchandler.js";
 import { StatusCodes } from "http-status-codes";
 import { User } from "../models/user.model.js";
 import { generateApiResponse } from "../utils/apirespnose.js";
