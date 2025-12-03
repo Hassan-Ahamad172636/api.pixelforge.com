@@ -7,7 +7,8 @@ import mongoose from "mongoose";
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "10mb" })); // default 1mb → 10mb
+app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
 // CALL DB once
 await connectDB();  // note: top-level await is allowed in modules
