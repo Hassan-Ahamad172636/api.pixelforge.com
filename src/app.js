@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
-import UserRoutes from "../routes/user.route.js"
-import ConversationRoutes from "../routes/conversation.route.js"
+import UserRoutes from "../src/routes/user.route.js"
+import ConversationRoutes from "../src/routes/conversation.route.js"
 import mongoose from "mongoose";
-import connectDB from "./database/server.js";  // <- FIX
 import { DB_NAME } from "./constant.js";
+import connectDB from "./database/server.js";
 
 const app = express();
 app.use(cors());
